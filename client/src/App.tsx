@@ -1,11 +1,14 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import './App.css';
+import { PageGame } from './page/game/index.game';
 
 function App() {
   const [count, setCount] = useState(0);
 
-  return <div className="App"></div>;
+  return (
+    <main>
+      <PageGame />
+    </main>
+  );
 }
 
 export default App;
