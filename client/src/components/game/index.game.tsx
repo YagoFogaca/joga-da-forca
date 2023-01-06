@@ -1,15 +1,12 @@
 import { useEffect, useState } from 'react';
 import { IWords } from '../../utils/interfaces/mocks';
-import { wordGenerator } from '../../utils/word-generator/wordGenerator';
 import { FieldInfos } from '../field-infos/index.fieldInfos';
 import { Form } from '../form/index.form';
 import { Lyrics } from '../lyrics-section/index.lyrics';
 import './game.style.css';
 
-export function Game() {
-  const word = 'hipopótamo';
+export function Game({ topic, word }: IWords) {
   const wordArray = word.split('');
-  const [wordTeste, setWordTeste] = useState<IWords>({ topic: '', word: '' });
 
   const [disabledInput, setDisabledInput] = useState(false);
   const [wordCopy, setWordCopy] = useState<number[]>(
@@ -17,24 +14,14 @@ export function Game() {
   );
 
   function Acerto(correct: string) {
-    const wordCopyT: number[] = wordCopy;
+    const wordCopyArray: number[] = wordCopy;
     wordArray.map((lyrics, index) => {
       if (lyrics === correct) {
-        wordCopyT[index] = 1;
-        setWordCopy(wordCopyT);
+        wordCopyArray[index] = 1;
+        setWordCopy(wordCopyArray);
       }
     });
   }
-
-  function startGame() {
-    const word = wordGenerator();
-    console.log(word);
-    setWordTeste(word);
-  }
-
-  useEffect(() => {
-    startGame();
-  }, []);
 
   return (
     <>
@@ -42,13 +29,13 @@ export function Game() {
 
       <div className="field-game">
         <div className="field-tema">
-          <h2 id="title-tema">{wordTeste.topic}</h2>
+          <h2 id="title-tema">{topic}</h2>
         </div>
 
         <div id="game">
           <div id="field-lyrics">
-            {wordCopy.map((indice, index) => {
-              if (indice === 1) {
+            {wordCopy.map((value, index) => {
+              if (value === 1) {
                 return <Lyrics lyrics={wordArray[index]} key={index} />;
               } else {
                 return <Lyrics key={index} />;
