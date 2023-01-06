@@ -1,0 +1,35 @@
+.field-game {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10rem;
+  margin-top: 5rem;
+}
+
+.field-tema {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#title-tema {
+  font-size: 3.9rem;
+}
+
+#game {
+  width: 90%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+#field-lyrics {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+}
